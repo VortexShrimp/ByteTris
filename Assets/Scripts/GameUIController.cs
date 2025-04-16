@@ -38,6 +38,9 @@ namespace Assets.Scripts
             bool isActive = !_pauseMenuPanel.activeSelf;
             _pauseMenuPanel.SetActive(isActive);
 
+            // Update the state in the game manager.
+            GameManagerSingleton.Instance.isPaused = isActive;
+
             Time.timeScale = isActive == true ? 0 : 1;
         }
 
