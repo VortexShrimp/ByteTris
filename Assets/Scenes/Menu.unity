@@ -1797,7 +1797,7 @@ GameObject:
   - component: {fileID: 2117177229}
   - component: {fileID: 2117177228}
   m_Layer: 5
-  m_Name: Menu Background
+  m_Name: Menu Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

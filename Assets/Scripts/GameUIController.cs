@@ -4,13 +4,20 @@ namespace Assets.Scripts
 {
     public class GameUIController : MonoBehaviour
     {
+        /// <summary>
+        /// Panel that needs to be toggled to show the pause menu.
+        /// </summary>
         [SerializeField]
-        GameObject _pauseMenuPanel;
+        GameObject _pausePanel;
+
+        [SerializeField]
+        GameObject _optionsPanel;
 
         void Awake()
         {
             // Just in-case the panel is left active in the editor.
-            _pauseMenuPanel.SetActive(false);
+            _pausePanel.SetActive(false);
+            PersistentGameManger.Instance.isPaused = false;
         }
 
         void OnEnable()
@@ -31,15 +38,14 @@ namespace Assets.Scripts
             }
         }
 
-        // TODO: Track paused state through a "GameManager" singleton?
         void ToggleGamePaused()
         {
             // Toggle the pause menu panel.
-            bool isActive = !_pauseMenuPanel.activeSelf;
-            _pauseMenuPanel.SetActive(isActive);
+            bool isActive = !_pausePanel.activeSelf;
+            _pausePanel.SetActive(isActive);
 
             // Update the state in the game manager.
-            GameManagerSingleton.Instance.isPaused = isActive;
+            PersistentGameManger.Instance.isPaused = isActive;
 
             Time.timeScale = isActive == true ? 0 : 1;
         }

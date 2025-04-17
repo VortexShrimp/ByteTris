@@ -20,18 +20,21 @@ namespace Assets.Scripts
 
         void Update()
         {
-            if (GameManagerSingleton.Instance.isPaused == true)
+            if (PersistentGameManger.Instance.isPaused == true)
             {
                 return;
             }
 
-            Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            // Get the position of the mouse in the grid.
-            Vector3Int cellPosition = _grid.LocalToCell(mousePosition);
-
-            if (_tilemap.HasTile(cellPosition) == true)
+            if (Input.GetKeyUp(KeyCode.Mouse0) == true)
             {
-                _tilemap.SetTile(cellPosition, _testTile);
+                Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                // Get the position of the mouse in the grid.
+                Vector3Int cellPosition = _grid.LocalToCell(mousePosition);
+
+                if (_tilemap.HasTile(cellPosition) == true)
+                {
+                    _tilemap.SetTile(cellPosition, _testTile);
+                }
             }
         }
     }
